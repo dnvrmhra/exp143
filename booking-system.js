@@ -6,6 +6,10 @@ app.use(express.json());
 
 let seats = 100;
 
+app.get("/", (req, res) => {
+  res.send("Ticket Booking API is running");
+});
+
 app.post("/api/book", async (req, res) => {
 
     const lockKey = "seat_lock";
