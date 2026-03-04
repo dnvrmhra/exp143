@@ -41,6 +41,9 @@ app.post("/api/book", async (req, res) => {
         await client.del(lockKey);
     }
 });
+
+const PORT=process.env.PORT || 3000;
+
 app.listen(3000, () => {
     console.log("Booking system running on port 3000");
 });
