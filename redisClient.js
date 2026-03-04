@@ -4,11 +4,13 @@ const client = createClient({
   url: process.env.REDIS_URL,
   socket: {
     tls: true,
-    rejectUnauthorized: false
+    reconnectStrategy: () => 1000
   }
 });
 
-client.on("error", (err) => console.log("Redis Error:", err));
+client.on("error", (err) => {
+  console.error("Redis Error:", err);
+});
 
 await client.connect();
 
