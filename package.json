@@ -1,0 +1,14 @@
+{
+  "name": "ticket-booking-system",
+  "version": "1.0.0",
+  "description": "Concurrent ticket booking system using Redis",
+  "main": "booking-system.js",
+  "type": "module",
+  "scripts": {
+    "start": "node booking-system.js"
+  },
+  "dependencies": {
+    "express": "^4.22.1",
+    "redis": "^4.7.1"
+  }
+}
