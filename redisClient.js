@@ -1,22 +1,17 @@
 import { createClient } from "redis";
 
-const redisUrl = process.env.REDIS_URL;
-
-if (!redisUrl) {
-  throw new Error("REDIS_URL environment variable not set");
-}
-
 const client = createClient({
-  url: redisUrl
+  url: process.env.REDIS_URL,
+  socket: {
+    tls: true,
+    rejectUnauthorized: false
+  }
 });
 
-client.on("error", (err) => console.error("Redis Error:", err));
+client.on("error", (err) => console.log("Redis Error:", err));
 
-async function connectRedis() {
-  await client.connect();
-  console.log("Redis connected");
-}
+await client.connect();
 
-await connectRedis();
+console.log("Redis connected");
 
 export default client;
